@@ -1,12 +1,23 @@
 import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
-import { VoucherModule } from './voucher/voucher.module';
+import { TypeOrmModule } from '@nestjs/typeorm';
 import { VoucherInventoryModule } from './voucher-inventory/voucher-inventory.module';
+import { ConfigModule } from '@nestjs/config';
+
+
+
 
 @Module({
-  imports: [VoucherModule, VoucherInventoryModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [
+    ConfigModule.forRoot(),
+    VoucherInventoryModule,
+    TypeOrmModule.forRoot({
+      type: 'postgres',
+      url: process.env.DB_URL,    
+      entities: [__dirname + '/**/*.entity{.ts,.js}'],
+      synchronize: true,
+    }),      
+  ],
+  controllers: [],
+  providers: [],
 })
 export class AppModule {}
