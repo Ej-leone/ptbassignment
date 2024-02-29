@@ -1,11 +1,12 @@
-import { IsDateString, IsNotEmpty, IsString } from 'class-validator';
+import { IsDateString, IsNotEmpty, IsString, Validate } from 'class-validator';
+import { IsFutureDate } from 'src/util/date-validator';
 
 export class CreateVoucherInventoryDto {
   @IsString()
   @IsNotEmpty()
   title: string;
 
-  @IsDateString()
+  @Validate(IsFutureDate)
   endDate: Date;
 
   @IsString()

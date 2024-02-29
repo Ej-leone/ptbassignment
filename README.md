@@ -1,7 +1,7 @@
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) PTB assignment
+ PTB assignment
 
 ## Installation
 
@@ -19,11 +19,14 @@ set up an env  and replace DB_URL with the actual  url for your database
 
 ## Documentation
 
-run yarn start 
+start the application in dev 
+```bash
+$ npm run start
+```
 
- head to 
+ head to  view the swagger documentation
 
- 
+
 http://localhost:3000/api
 
 
